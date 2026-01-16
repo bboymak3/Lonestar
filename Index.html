@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Fiscal 2026: LLC en Texas para No-Residentes | Evita Multas de $25,000</title>
+    <meta name="description" content="Asesoría especializada para emprendedores extranjeros con LLC en Texas. Cumple con el IRS, FinCEN y Texas. Evita multas de $25,000 USD. ITIN, Formulario 5472, BOI. Consultoría en español.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --primary-light: #534bae;
+            --secondary: #b71c1c;
+            --accent: #0d47a1;
+            --light: #f5f5f5;
+            --dark: #121212;
+            --gray: #424242;
+            --success: #2e7d32;
+            --warning: #f57c00;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--dark);
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+
+        /* Header & Navegación */
+        header {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .language-selector {
+            display: flex;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-left: 1rem;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #d32f2f;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Alert Box */
+        .alert-box {
+            background-color: #fff8e1;
+            border-left: 5px solid var(--warning);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .alert-box h3 {
+            color: var(--warning);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-card i {
+            color: var(--secondary);
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-answer.open {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--gray) 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #333;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        /* Lead Magnet */
+        .lead-magnet {
+            background: linear-gradient(to right, var(--primary-light), var(--primary));
+            color: white;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            margin: 3rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .lead-form {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .lead-form input {
+            padding: 1rem;
+            border-radius: var(--radius);
+            border: none;
+            font-size: 1rem;
+        }
+
+        /* Contact Info Box */
+        .contact-info-box {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-top: 1.5rem;
+            border-left: 5px solid var(--success);
+        }
+
+        .contact-info-box h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title {
+                font-size: 1.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1rem 0;
+            }
+
+            .language-selector {
+                margin: 1rem auto 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .lead-form {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/14696934613?text=Hola,%20me%20interesa%20la%20asesor%C3%ADa%20fiscal%20para%20LLC%20en%20Texas" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <i class="fas fa-balance-scale"></i>
+                    TexFiscal
+                </a>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#inicio" class="active">Inicio</a></li>
+                    <li><a href="#modelo">Modelo Texas</a></li>
+                    <li><a href="#cumplimiento">Cumplimiento IRS</a></li>
+                    <li><a href="#itin">ITIN & Migración</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#calendario">Calendario</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    
+                    <div class="language-selector">
+                        <button class="lang-btn active" id="lang-es">ES</button>
+                        <button class="lang-btn" id="lang-en">EN</button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h1>Guía Fiscal 2026: LLC en Texas para No-Residentes</h1>
+            <p class="hero-subtitle">Evita multas de $25,000 USD del IRS. Cumple con el IRS, FinCEN y Texas. Mantén tu LLC en "Good Standing" y construye tu historial legal en EE.UU.</p>
+            
+            <!-- Información de contacto en Hero -->
+            <div class="contact-info-box">
+                <h4><i class="fas fa-map-marker-alt"></i> Oficina Principal</h4>
+                <p><strong>Dirección:</strong> 4394 Wood Hollow Dr. #2816, Dallas, TX 75237</p>
+                <p><strong>Teléfono:</strong> <a href="tel:+14696934613" style="color: var(--primary); text-decoration: none;">469-693-4613</a></p>
+                <p><strong>Horario:</strong> Lunes a Viernes 9am - 6pm CST | Sábados con cita previa</p>
+            </div>
+            
+            <div class="alert-box">
+                <h3><i class="fas fa-exclamation-triangle"></i> ALERTA CRÍTICA</h3>
+                <p><strong>No presentar el Formulario 5472</strong> genera una multa automática de <strong>$25,000 USD</strong> por parte del IRS. Aunque tu negocio no tenga ingresos, el reporte es OBLIGATORIO para LLCs de dueño extranjero.</p>
+            </div>
+            
+            <div class="hero-btns">
+                <a href="#contacto" class="btn btn-primary">
+                    <i class="fas fa-calendar-check"></i> Agendar Consulta Gratuita
+                </a>
+                <a href="#lead-magnet" class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Descargar Checklist Gratis
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="container">
+        <h2 class="section-title">Expertos en Fiscalidad Internacional</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3><i class="fas fa-shield-alt"></i> Basado en el Código IRS</h3>
+                <p>Toda nuestra asesoría se fundamenta en el Internal Revenue Code (IRC), regulaciones de FinCEN y leyes estatales de Texas, garantizando cumplimiento 100% legal.</p>
+            </div>
+            <div class="service-card">
+                <h3><i class="fas fa-user-tie"></i> Especialistas en No-Residentes</h3>
+                <p>+200 clientes internacionales asesorados en procesos de ITIN, Formulario 5472, Franchise Tax y reportes BOI. Hablamos tu idioma.</p>
+            </div>
+            <div class="service-card">
+                <h3><i class="fas fa-handshake"></i> Confidencialidad Garantizada</h3>
+                <p>El IRS tiene prohibido por ley compartir tu información con agencias de inmigración. Tu privacidad está protegida.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Texas Model -->
+    <section id="modelo" style="background-color: #f0f4f8;">
+        <div class="container">
+            <h2 class="section-title">El Modelo Fiscal de Texas: Ventajas y Obligaciones</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3><i class="fas fa-ban"></i> No Hay Income Tax Estatal</h3>
+                    <p>Texas es uno de los pocos estados que NO cobra impuesto sobre la renta personal. Tus ganancias personales no se gravan a nivel estatal.</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-store"></i> Franchise Tax (Impuesto de Franquicia)</h3>
+                    <p>Pago por el derecho a operar en Texas. Si tus ventas son menores a <strong>$2.47 millones</strong>, el pago es $0. Pero el reporte es OBLIGATORIO anual.</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-receipt"></i> Sales Tax (Impuesto a las Ventas)</h3>
+                    <p>Tasa máxima del 8.25% (6.25% estado + 2% local). Debes recaudarlo si vendes bienes físicos o ciertos servicios en Texas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance -->
+    <section id="cumplimiento">
+        <div class="container">
+            <h2 class="section-title">Cumplimiento Crítico para No-Residentes</h2>
+            
+            <div class="alert-box">
+                <h3><i class="fas fa-file-invoice-dollar"></i> Formularios Federales Esenciales</h3>
+                <p>El IRS es más estricto que Texas. Estos formularios evitan el cierre de tu empresa y multas catastróficas.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3><i class="fas fa-file-signature"></i> Formulario 5472 + 1120</h3>
+                    <p><strong>OBLIGATORIO para LLCs de un solo dueño extranjero.</strong> Reporte informativo. Multa automática de $25,000 por no presentarlo.</p>
+                    <a href="#contacto" class="btn btn-primary" style="margin-top: 1rem; padding: 0.6rem 1.5rem;">Necesito Ayuda</a>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-users"></i> Reporte BOI (FinCEN)</h3>
+                    <p>Información de Dueños Reales. Se presenta ante FinCEN. Sanciones civiles y penales diarias por incumplimiento.</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-university"></i> FBAR (FinCEN 114)</h3>
+                    <p>Si tu empresa tuvo más de $10,000 en cuentas fuera de EE.UU. en cualquier momento del año.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ITIN & Immigration -->
+    <section id="itin" style="background-color: #f0f4f8;">
+        <div class="container">
+            <h2 class="section-title">ITIN, Confidencialidad y Beneficios Migratorios</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3><i class="fas fa-id-card"></i> ITIN (Número de Identificación Fiscal)</h3>
+                    <p>Para quienes no tienen Seguro Social. Permite declarar impuestos legalmente. Lo obtenemos para ti sin necesidad de viajar a EE.UU.</p>
+                    <a href="#contacto" class="btn btn-primary" style="margin-top: 1rem; padding: 0.6rem 1.5rem;">Solicitar ITIN</a>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-lock"></i> Confidencialidad IRS-Inmigración</h3>
+                    <p>El IRS tiene prohibido por ley (IRC § 6103) compartir información fiscal con ICE o USCIS. Declarar impuestos NO afecta tu estatus migratorio.</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-passport"></i> Beneficios de Declarar</h3>
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                        <li>Demuestra "Buen Carácter Moral"</li>
+                        <li>Prueba de presencia física en EE.UU.</li>
+                        <li>Abre puertas a créditos hipotecarios</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: Servicios Profesionales -->
+    <section id="servicios" style="background-color: #e8f4fc;">
+        <div class="container">
+            <h2 class="section-title">Servicios Profesionales Complementarios</h2>
+            <p style="text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Ofrecemos una suite completa de servicios para operar tu negocio en EE.UU. con profesionalismo y tranquilidad. 
+                <strong>Desde nuestra oficina en Dallas, Texas, atendemos clientes en todo el mundo.</strong>
+            </p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3><i class="fas fa-file-invoice"></i> Preparadora de Impuestos</h3>
+                    <p><strong>Certificada por el IRS (PTIN)</strong>. Preparación y presentación de: 1040-NR, 1120, 1120-S, 1065, 5472, 8832, extensiones y enmiendas. Representación ante el IRS en caso de auditoría.</p>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                        <small><i class="fas fa-clock"></i> Servicio disponible en oficina y remoto</small>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <h3><i class="fas fa-stamp"></i> Notaría Pública</h3>
+                    <p><strong>Notario Público comisionado en Texas</strong>. Notarización de documentos para uso legal en EE.UU. e internacional: contratos, poderes notariales, declaraciones juradas, autenticación de documentos.</p>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                        <small><i class="fas fa-map-marker-alt"></i> Servicio presencial en Dallas, TX</small>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <h3><i class="fas fa-book"></i> Contadora & Bookkeeping</h3>
+                    <p><strong>Contabilidad profesional completa</strong>. Sistema QuickBooks Online setup, reconciliación bancaria, estados financieros mensuales, reportes para impuestos, clasificación de gastos, manejo de nóminas.</p>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                        <small><i class="fas fa-laptop"></i> 100% en línea con acceso 24/7</small>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <h3><i class="fas fa-building"></i> Administración de Empresas</h3>
+                    <p><strong>Gestión operativa integral</strong>. Registro empresarial, licencias locales/estatales, compliance corporativo, actas de reuniones, mantenimiento de registros, servicios de registered agent, renewals anuales.</p>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                        <small><i class="fas fa-headset"></i> Gestor dedicado asignado</small>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <h3><i class="fas fa-envelope-open-text"></i> Preparación de Cartas y Documentos</h3>
+                    <p><strong>Redacción profesional bilingüe</strong>. Cartas al IRS, bancos, USCIS, USCBP; cartas de explicación (LOE), declaraciones juradas, contratos empresariales, acuerdos de operación LLC, documentos corporativos.</p>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                        <small><i class="fas fa-language"></i> Inglés y español</small>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <h3><i class="fas fa-star"></i> Consultoría Integral 360°</h3>
+                    <p><strong>Paquete todo-en-uno premium</strong>. Combinación de todos los servicios anteriores con un gestor dedicado. La solución completa para dueños extranjeros que quieren operar en Texas sin preocupaciones administrativas.</p>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                        <small><i class="fas fa-crown"></i> Servicio premium con atención prioritaria</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Información de contacto en sección de servicios -->
+            <div class="contact-info-box">
+                <h4><i class="fas fa-info-circle"></i> Información de Contacto para Servicios</h4>
+                <p><strong>📍 Dirección física:</strong> 4394 Wood Hollow Dr. #2816, Dallas, TX 75237</p>
+                <p><strong>📞 Teléfono principal:</strong> <a href="tel:+14696934613" style="color: var(--primary); text-decoration: none;">469-693-4613</a></p>
+                <p><strong>📧 Email servicios:</strong> servicios@texfiscal.com</p>
+                <p><strong>⏰ Horario para servicios presenciales:</strong> Lunes a Viernes 9am-6pm | Sábados 10am-2pm (con cita)</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#contacto" class="btn btn-primary">
+                    <i class="fas fa-clipboard-list"></i> Solicitar Cotización Personalizada
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Magnet -->
+    <section id="lead-magnet">
+        <div class="container">
+            <div class="lead-magnet">
+                <h2><i class="fas fa-gift"></i> Descarga Gratis: Checklist de Cumplimiento 2026</h2>
+                <p>Recibe nuestra checklist paso a paso con todas las obligaciones, fechas y formularios para mantener tu LLC en Texas en "Good Standing". <strong>Incluye descuento exclusivo del 15% en tu primer servicio de preparación de impuestos o contabilidad.</strong></p>
+                
+                <form class="lead-form" id="download-form">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit" class="btn btn-primary">Descargar Checklist <i class="fas fa-arrow-down"></i></button>
+                </form>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">Respetamos tu privacidad. No compartimos tu email.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar -->
+    <section id="calendario">
+        <div class="container">
+            <h2 class="section-title">Calendario Fiscal 2026: Fechas Clave</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Incumplir estas fechas genera multas severas y puede llevar al cierre de tu LLC.</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha Límite</th>
+                            <th>Obligación / Formulario</th>
+                            <th>Consecuencia del Incumplimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>15 de Marzo</strong></td>
+                            <td>Multi-Member LLCs (Form 1065)</td>
+                            <td>Multas por cada socio y mes de retraso</td>
+                        </tr>
+                        <tr>
+                            <td><strong>15 de Abril</strong></td>
+                            <td>Declaración General (5472, 1120, 1040-NR)</td>
+                            <td class="warning">Multas de $25,000 USD (IRS)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>15 de Mayo</strong></td>
+                            <td>Reporte de Franquicia (Texas)</td>
+                            <td>Pérdida de licencia para operar en el estado</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1 de Enero (Anual)</strong></td>
+                            <td>Reporte BOI (FinCEN)</td>
+                            <td>Sanciones civiles y penales diarias</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#contacto" class="btn btn-primary">
+                    <i class="fas fa-calendar-alt"></i> ¿Te preocupan estas fechas? Gestionamos tu calendario
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="background-color: #f0f4f8;">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Realmente no pago income tax estatal en Texas?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Correcto.</strong> Texas no tiene impuesto sobre la renta personal (personal income tax). Sin embargo, debes pagar impuestos federales a través del IRS y el Franchise Tax si tu LLC genera ingresos por encima del umbral de exención.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Si mi LLC no generó ingresos este año, ¿debo presentar igual?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>SÍ, es OBLIGATORIO.</strong> Incluso con ingresos cero, debes presentar el Formulario 5472 (si eres dueño extranjero) y el reporte de Franchise Tax en Texas. No presentarlos genera multas automáticas.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Puedo obtener mi ITIN desde mi país sin viajar a EE.UU.?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Sí, es posible.</strong> A través de un Agente Certificado Acceptance Agent (CAA) autorizado por el IRS, podemos ayudarte a obtener tu ITIN sin necesidad de viajar a Estados Unidos.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿El IRS comparte mi información con inmigración?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>NO.</strong> El Internal Revenue Code § 6103 prohíbe al IRS compartir información de contribuyentes con ICE, USCIS u otras agencias de inmigración. Tu información fiscal es confidencial.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Ofrecen servicios presenciales en Dallas?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Sí.</strong> Tenemos oficina física en <strong>4394 Wood Hollow Dr. #2816, Dallas, TX 75237</strong>. Ofrecemos servicios presenciales de notaría, consultas personales y recolección de documentos. También atendemos a clientes remotos en todo el mundo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section" id="contacto">
+        <div class="container">
+            <h2>¿Listo para Cumplir sin Estrés?</h2>
+            <p style="max-width: 700px; margin: 1rem auto 2rem; font-size: 1.1rem;">
+                Visítanos en nuestra oficina de Dallas o agenda una consulta virtual. Nuestro equipo de expertos gestiona todo el proceso por ti: formularios IRS, reportes Texas, ITIN y más.
+            </p>
+            
+            <!-- Información de contacto destacada -->
+            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: var(--radius); margin: 2rem auto; max-width: 600px;">
+                <h3 style="margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <i class="fas fa-map-marker-alt"></i> Oficina Dallas, Texas
+                </h3>
+                <p style="margin-bottom: 0.5rem;"><strong>📍 Dirección:</strong> 4394 Wood Hollow Dr. #2816, Dallas, TX 75237</p>
+                <p style="margin-bottom: 0.5rem;"><strong>📞 Teléfono:</strong> <a href="tel:+14696934613" style="color: white; text-decoration: underline;">469-693-4613</a></p>
+                <p style="margin-bottom: 0.5rem;"><strong>📧 Email:</strong> consultas@texfiscal.com</p>
+                <p><strong>⏰ Horario:</strong> Lunes a Viernes 9am - 6pm CST | Sábados con cita previa</p>
+            </div>
+            
+            <div class="hero-btns">
+                <a href="https://wa.me/14696934613?text=Hola,%20quiero%20agendar%20una%20consulta%20sobre%20mi%20LLC%20en%20Texas" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp: 469-693-4613
+                </a>
+                <a href="tel:+14696934613" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i> Llamar ahora
+                </a>
+                <a href="mailto:consultas@texfiscal.com" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Enviar Email
+                </a>
+            </div>
+            
+            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+                <i class="fas fa-car"></i> Estacionamiento gratuito disponible | <i class="fas fa-wheelchair"></i> Accesible para sillas de ruedas
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>TexFiscal</h3>
+                    <p><strong>Oficina Principal:</strong><br>
+                    4394 Wood Hollow Dr. #2816<br>
+                    Dallas, TX 75237<br>
+                    Estados Unidos</p>
+                    <p style="margin-top: 1rem;">
+                        <i class="fas fa-phone"></i> <a href="tel:+14696934613" style="color: #ccc; text-decoration: none;">469-693-4613</a><br>
+                        <i class="fas fa-envelope"></i> <a href="mailto:info@texfiscal.com" style="color: #ccc; text-decoration: none;">info@texfiscal.com</a>
+                    </p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#modelo">Modelo Texas</a></li>
+                        <li><a href="#cumplimiento">Cumplimiento IRS</a></li>
+                        <li><a href="#itin">ITIN & Migración</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#calendario">Calendario 2026</a></li>
+                        <li><a href="#faq">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="#cumplimiento">Formulario 5472 / 1120</a></li>
+                        <li><a href="#cumplimiento">Reporte BOI (FinCEN)</a></li>
+                        <li><a href="#itin">Obtención de ITIN</a></li>
+                        <li><a href="#calendario">Franchise Tax Texas</a></li>
+                        <li><a href="#servicios">Preparación de Impuestos</a></li>
+                        <li><a href="#servicios">Servicios Notariales</a></li>
+                        <li><a href="#servicios">Contabilidad & Bookkeeping</a></li>
+                        <li><a href="#servicios">Administración de Empresas</a></li>
+                        <li><a href="#contacto">Consultoría Integral</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos de Servicio</a></li>
+                        <li><a href="#">Aviso Legal</a></li>
+                        <li><a href="#">Divulgación de Riesgos</a></li>
+                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <p>Síguenos:</p>
+                        <div style="display: flex; gap: 1rem; margin-top: 0.5rem; font-size: 1.2rem;">
+                            <a href="#" style="color: #ccc;"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" style="color: #ccc;"><i class="fab fa-facebook"></i></a>
+                            <a href="#" style="color: #ccc;"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 TexFiscal. Todos los derechos reservados. Oficina registrada en Dallas, Texas. La información aquí presentada es de carácter educativo y no constituye asesoría legal o fiscal. Consulte a un profesional para su situación específica.</p>
+                <p style="margin-top: 0.5rem;">Este sitio no está afiliado al IRS, FinCEN o gobierno de Texas. Preparadora de Impuestos certificada por el IRS. Notario Público comisionado en el estado de Texas.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                answer.classList.toggle('open');
+                
+                if (answer.classList.contains('open')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Language Selector (Basic functionality)
+        const langEs = document.getElementById('lang-es');
+        const langEn = document.getElementById('lang-en');
+        
+        langEs.addEventListener('click', () => {
+            langEs.classList.add('active');
+            langEn.classList.remove('active');
+            // In a real implementation, this would trigger a full translation
+            alert('Idioma cambiado a Español. En una implementación real, toda la página se traduciría.');
+        });
+        
+        langEn.addEventListener('click', () => {
+            langEn.classList.add('active');
+            langEs.classList.remove('active');
+            alert('Language changed to English. In a real implementation, the entire page would translate.');
+        });
+
+        // Form Submission
+        document.getElementById('download-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`¡Gracias! Hemos enviado el Checklist de Cumplimiento 2026 a: ${email}\n\nRevisa tu carpeta de spam si no lo recibes en los próximos minutos.`);
+            this.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Phone number click tracking (optional)
+        document.querySelectorAll('a[href^="tel:"]').forEach(phoneLink => {
+            phoneLink.addEventListener('click', function() {
+                console.log('Teléfono clickeado:', this.getAttribute('href'));
+                // Aquí podrías agregar Google Analytics o otro tracking
+            });
+        });
+    </script>
+</body>
+  </html>
