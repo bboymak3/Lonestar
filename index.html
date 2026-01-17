@@ -8,39 +8,71 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #1a237e;
-            --primary-light: #534bae;
-            --secondary: #b71c1c;
-            --accent: #0d47a1;
-            --light: #f5f5f5;
-            --dark: #121212;
-            --gray: #424242;
+            /* Colores Principales */
+            --primary: #1a237e;       /* Azul profundo */
+            --primary-light: #534bae; /* Azul claro para gradientes */
+            --secondary: #b71c1c;     /* Rojo fuerte para alertas/acciones */
+            --accent: #0d47a1;        /* Azul acento */
+            
+            /* Fondos y Textos (Optimizados para contraste) */
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text-main: #2c3e50;     /* Gris muy oscuro para mejor lectura que el negro puro */
+            --text-muted: #546e7a;    /* Gris medio para textos secundarios */
+            --text-on-dark: #e0e0e0;  /* Texto sobre fondos oscuros */
+            
+            /* Estados */
             --success: #2e7d32;
-            --warning: #f57c00;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --radius: 8px;
+            --warning-bg: #fff3e0;
+            --warning-text: #e65100;
+            
+            /* UI */
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            color: var(--dark);
-            background-color: #f9f9f9;
-            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--light-bg);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Utilidades de Animación */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, visibility;
+        }
+        
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
         }
 
         /* Header & Navegación */
         header {
-            background: white;
-            box-shadow: var(--shadow);
+            background: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.98);
         }
 
         .container {
@@ -59,7 +91,7 @@
 
         .logo {
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary);
             text-decoration: none;
             display: flex;
@@ -74,38 +106,58 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
+            align-items: center;
         }
 
         .nav-menu a {
             text-decoration: none;
-            color: var(--gray);
-            font-weight: 500;
-            transition: color 0.3s;
+            color: var(--text-muted);
+            font-weight: 600;
+            transition: var(--transition);
             padding: 0.5rem 0;
+            position: relative;
+            font-size: 0.95rem;
         }
 
         .nav-menu a:hover,
         .nav-menu a.active {
             color: var(--primary);
-            border-bottom: 2px solid var(--primary);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
         }
 
         .language-selector {
             display: flex;
-            border: 1px solid #ddd;
-            border-radius: var(--radius);
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
             overflow: hidden;
             margin-left: 1rem;
         }
 
         .lang-btn {
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             background: white;
             border: none;
             cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            color: var(--text-muted);
         }
 
         .lang-btn.active {
@@ -117,7 +169,8 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
-            gap: 4px;
+            gap: 5px;
+            z-index: 1001;
         }
 
         .hamburger span {
@@ -125,112 +178,151 @@
             height: 3px;
             background-color: var(--primary);
             border-radius: 2px;
-            transition: 0.3s;
+            transition: var(--transition);
         }
 
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             color: white;
-            padding: 4rem 0;
+            padding: 5rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: rotate 60s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
             line-height: 1.2;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
         }
 
         .hero-subtitle {
             font-size: 1.4rem;
-            margin-bottom: 2rem;
-            max-width: 800px;
+            margin-bottom: 2.5rem;
+            max-width: 850px;
             margin-left: auto;
             margin-right: auto;
-            opacity: 0.9;
+            opacity: 0.95;
+            font-weight: 300;
+            position: relative;
         }
 
         .hero-btns {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
         }
 
         .btn {
-            padding: 0.9rem 2rem;
-            border-radius: var(--radius);
-            font-weight: 600;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 700;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            transition: all 0.3s;
+            gap: 10px;
+            transition: var(--transition);
             cursor: pointer;
             border: none;
             font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .btn-primary {
             background-color: var(--secondary);
             color: white;
+            box-shadow: 0 4px 15px rgba(183, 28, 28, 0.4);
         }
 
         .btn-primary:hover {
-            background-color: #d32f2f;
+            background-color: #c62828;
             transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(183, 28, 28, 0.5);
         }
 
         .btn-secondary {
             background-color: transparent;
             color: white;
-            border: 2px solid white;
+            border: 2px solid rgba(255,255,255,0.7);
         }
 
         .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: white;
             transform: translateY(-3px);
         }
 
         /* Alert Box */
         .alert-box {
-            background-color: #fff8e1;
-            border-left: 5px solid var(--warning);
+            background-color: var(--warning-bg);
+            border-left: 5px solid var(--warning-text);
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
+            text-align: left;
         }
 
         .alert-box h3 {
-            color: var(--warning);
-            margin-bottom: 0.5rem;
+            color: var(--warning-text);
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .alert-box p {
+            color: #4e342e; /* Contraste mejorado para advertencia */
+            font-size: 1.05rem;
         }
 
         /* Section Styling */
         section {
-            padding: 4rem 0;
+            padding: 5rem 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
             color: var(--primary);
             font-size: 2.2rem;
             position: relative;
+            font-weight: 800;
         }
 
         .section-title:after {
             content: '';
             position: absolute;
-            width: 80px;
+            width: 60px;
             height: 4px;
             background: var(--secondary);
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
             border-radius: 2px;
@@ -241,33 +333,51 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
         .service-card {
             background: white;
             border-radius: var(--radius);
-            padding: 2rem;
+            padding: 2.5rem;
             box-shadow: var(--shadow);
-            transition: transform 0.3s;
+            transition: var(--transition);
             border-top: 4px solid var(--primary);
+            position: relative;
+            overflow: hidden;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
         }
 
         .service-card h3 {
             color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.35rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-weight: 700;
         }
 
         .service-card i {
             color: var(--secondary);
+            font-size: 1.2rem;
+            background: rgba(183, 28, 28, 0.1);
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .service-card p, .service-card li {
+            color: var(--text-main); /* Contraste mejorado */
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card ul {
+            padding-left: 1.2rem;
         }
 
         /* Table */
@@ -276,32 +386,46 @@
             margin: 2rem 0;
             box-shadow: var(--shadow);
             border-radius: var(--radius);
+            background: white;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
         }
 
         th, td {
-            padding: 1rem;
+            padding: 1.2rem 1rem;
             text-align: left;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #eeeeee;
         }
 
         th {
             background-color: var(--primary);
             color: white;
-            font-weight: 600;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            color: var(--text-main); /* Contraste fuerte en celdas */
+            font-weight: 500;
         }
 
         tr:nth-child(even) {
-            background-color: #f8f9fa;
+            background-color: #fafafa;
         }
 
         tr:hover {
-            background-color: #e3f2fd;
+            background-color: #e8eaf6;
+            transition: background-color 0.2s;
+        }
+        
+        .warning {
+            color: #c62828;
+            font-weight: 700;
         }
 
         /* FAQ */
@@ -311,61 +435,77 @@
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
+            border: 1px solid #eee;
         }
 
         .faq-question {
             padding: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #f8f9fa;
+            background-color: white;
+            color: var(--primary);
+            transition: background-color 0.2s;
+        }
+        
+        .faq-question:hover {
+            background-color: #f5f5f5;
         }
 
         .faq-answer {
             padding: 0 1.5rem;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: var(--text-main); /* Texto de respuesta con buen contraste */
         }
 
         .faq-answer.open {
             padding: 1.5rem;
             max-height: 500px;
+            background-color: #fafafa;
         }
 
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, var(--dark) 0%, var(--gray) 100%);
+            background: linear-gradient(135deg, #121212 0%, #2c3e50 100%);
             color: white;
             text-align: center;
-            padding: 4rem 0;
+            padding: 5rem 0;
         }
 
         .cta-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+        
+        .cta-section p {
+            color: #b0bec5;
         }
 
         /* Footer */
         footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 3rem 0 1.5rem;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            padding: 4rem 0 2rem;
+            border-top: 3px solid var(--secondary);
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
         }
 
         .footer-column h3 {
             margin-bottom: 1.5rem;
             color: white;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
 
         .footer-column ul {
@@ -377,21 +517,23 @@
         }
 
         .footer-column ul li a {
-            color: #ccc;
+            color: #8b949e;
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
         .footer-column ul li a:hover {
-            color: white;
+            color: var(--secondary);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid #333;
-            color: #aaa;
-            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid #30363d;
+            color: #8b949e;
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
 
         /* WhatsApp Button */
@@ -401,46 +543,55 @@
             right: 2rem;
             background-color: #25D366;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
             z-index: 999;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         .whatsapp-float:hover {
             background-color: #128C7E;
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(10deg);
         }
 
         /* Lead Magnet */
         .lead-magnet {
             background: linear-gradient(to right, var(--primary-light), var(--primary));
             color: white;
-            padding: 2.5rem;
+            padding: 3rem;
             border-radius: var(--radius);
             margin: 3rem 0;
             box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .lead-magnet h2 {
+            margin-bottom: 1rem;
         }
 
         .lead-form {
             display: grid;
             grid-template-columns: 1fr auto;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .lead-form input {
-            padding: 1rem;
-            border-radius: var(--radius);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
             border: none;
             font-size: 1rem;
+            outline: none;
         }
 
         /* Contact Info Box */
@@ -451,6 +602,7 @@
             box-shadow: var(--shadow);
             margin-top: 1.5rem;
             border-left: 5px solid var(--success);
+            text-align: left;
         }
 
         .contact-info-box h4 {
@@ -459,36 +611,76 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-info-box p {
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-info-box a {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Toast Notification */
+        #toast-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background-color: #333;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            animation: slideUp 0.3s ease forwards;
+            min-width: 300px;
+        }
+        
+        .toast.success { border-left: 4px solid var(--success); }
+        .toast.info { border-left: 4px solid var(--primary); }
+        .toast.warning { border-left: 4px solid var(--warning-text); }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Responsive */
         @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-            
-            .section-title {
-                font-size: 1.9rem;
-            }
+            .hero h1 { font-size: 2.3rem; }
+            .section-title { font-size: 1.9rem; }
         }
 
         @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
+            .hamburger { display: flex; }
 
             .nav-menu {
                 position: fixed;
                 left: -100%;
-                top: 70px;
+                top: 0;
                 flex-direction: column;
                 background-color: white;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-                padding: 2rem 0;
-                gap: 0;
+                width: 80%;
+                height: 100vh;
+                text-align: left;
+                transition: 0.4s ease-in-out;
+                box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+                padding: 6rem 2rem;
+                gap: 1rem;
             }
 
             .nav-menu.active {
@@ -496,32 +688,35 @@
             }
 
             .nav-menu li {
-                margin: 1rem 0;
+                margin: 0;
+                width: 100%;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .nav-menu li:last-child {
+                border-bottom: none;
+                margin-top: auto;
             }
 
             .language-selector {
-                margin: 1rem auto 0;
+                margin: 0;
+                width: fit-content;
             }
 
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .lead-form {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero h1 { font-size: 2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .lead-form { grid-template-columns: 1fr; }
+            .btn { width: 100%; justify-content: center; }
+            
+            .hero-btns { flex-direction: column; align-items: center; }
+            .hero-btns .btn { width: 100%; max-width: 350px; }
         }
     </style>
 </head>
 <body>
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
     <!-- WhatsApp Button -->
     <a href="https://wa.me/14696934613?text=Hola,%20me%20interesa%20la%20asesor%C3%ADa%20fiscal%20para%20LLC%20en%20Texas" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
@@ -563,15 +758,15 @@
 
     <!-- Hero Section -->
     <section class="hero" id="inicio">
-        <div class="container">
+        <div class="container fade-in-section">
             <h1>Guía Fiscal 2026: LLC en Texas para No-Residentes</h1>
             <p class="hero-subtitle">Evita multas de $25,000 USD del IRS. Cumple con el IRS, FinCEN y Texas. Mantén tu LLC en "Good Standing" y construye tu historial legal en EE.UU.</p>
             
             <!-- Información de contacto en Hero -->
-            <div class="contact-info-box">
+            <div class="contact-info-box" style="display: inline-block; text-align: left; max-width: 600px;">
                 <h4><i class="fas fa-map-marker-alt"></i> Oficina Principal</h4>
                 <p><strong>Dirección:</strong> 4394 Wood Hollow Dr. #2816, Dallas, TX 75237</p>
-                <p><strong>Teléfono:</strong> <a href="tel:+14696934613" style="color: var(--primary); text-decoration: none;">469-693-4613</a></p>
+                <p><strong>Teléfono:</strong> <a href="tel:+14696934613">469-693-4613</a></p>
                 <p><strong>Horario:</strong> Lunes a Viernes 9am - 6pm CST | Sábados con cita previa</p>
             </div>
             
@@ -593,17 +788,17 @@
 
     <!-- Trust Indicators -->
     <section class="container">
-        <h2 class="section-title">Expertos en Fiscalidad Internacional</h2>
+        <h2 class="section-title fade-in-section">Expertos en Fiscalidad Internacional</h2>
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card fade-in-section">
                 <h3><i class="fas fa-shield-alt"></i> Basado en el Código IRS</h3>
                 <p>Toda nuestra asesoría se fundamenta en el Internal Revenue Code (IRC), regulaciones de FinCEN y leyes estatales de Texas, garantizando cumplimiento 100% legal.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card fade-in-section">
                 <h3><i class="fas fa-user-tie"></i> Especialistas en No-Residentes</h3>
                 <p>+200 clientes internacionales asesorados en procesos de ITIN, Formulario 5472, Franchise Tax y reportes BOI. Hablamos tu idioma.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card fade-in-section">
                 <h3><i class="fas fa-handshake"></i> Confidencialidad Garantizada</h3>
                 <p>El IRS tiene prohibido por ley compartir tu información con agencias de inmigración. Tu privacidad está protegida.</p>
             </div>
@@ -613,18 +808,18 @@
     <!-- Texas Model -->
     <section id="modelo" style="background-color: #f0f4f8;">
         <div class="container">
-            <h2 class="section-title">El Modelo Fiscal de Texas: Ventajas y Obligaciones</h2>
+            <h2 class="section-title fade-in-section">El Modelo Fiscal de Texas: Ventajas y Obligaciones</h2>
             
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-ban"></i> No Hay Income Tax Estatal</h3>
                     <p>Texas es uno de los pocos estados que NO cobra impuesto sobre la renta personal. Tus ganancias personales no se gravan a nivel estatal.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-store"></i> Franchise Tax (Impuesto de Franquicia)</h3>
                     <p>Pago por el derecho a operar en Texas. Si tus ventas son menores a <strong>$2.47 millones</strong>, el pago es $0. Pero el reporte es OBLIGATORIO anual.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-receipt"></i> Sales Tax (Impuesto a las Ventas)</h3>
                     <p>Tasa máxima del 8.25% (6.25% estado + 2% local). Debes recaudarlo si vendes bienes físicos o ciertos servicios en Texas.</p>
                 </div>
@@ -635,24 +830,24 @@
     <!-- Compliance -->
     <section id="cumplimiento">
         <div class="container">
-            <h2 class="section-title">Cumplimiento Crítico para No-Residentes</h2>
+            <h2 class="section-title fade-in-section">Cumplimiento Crítico para No-Residentes</h2>
             
-            <div class="alert-box">
+            <div class="alert-box fade-in-section">
                 <h3><i class="fas fa-file-invoice-dollar"></i> Formularios Federales Esenciales</h3>
                 <p>El IRS es más estricto que Texas. Estos formularios evitan el cierre de tu empresa y multas catastróficas.</p>
             </div>
             
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-file-signature"></i> Formulario 5472 + 1120</h3>
                     <p><strong>OBLIGATORIO para LLCs de un solo dueño extranjero.</strong> Reporte informativo. Multa automática de $25,000 por no presentarlo.</p>
                     <a href="#contacto" class="btn btn-primary" style="margin-top: 1rem; padding: 0.6rem 1.5rem;">Necesito Ayuda</a>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-users"></i> Reporte BOI (FinCEN)</h3>
                     <p>Información de Dueños Reales. Se presenta ante FinCEN. Sanciones civiles y penales diarias por incumplimiento.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-university"></i> FBAR (FinCEN 114)</h3>
                     <p>Si tu empresa tuvo más de $10,000 en cuentas fuera de EE.UU. en cualquier momento del año.</p>
                 </div>
@@ -663,21 +858,21 @@
     <!-- ITIN & Immigration -->
     <section id="itin" style="background-color: #f0f4f8;">
         <div class="container">
-            <h2 class="section-title">ITIN, Confidencialidad y Beneficios Migratorios</h2>
+            <h2 class="section-title fade-in-section">ITIN, Confidencialidad y Beneficios Migratorios</h2>
             
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-id-card"></i> ITIN (Número de Identificación Fiscal)</h3>
                     <p>Para quienes no tienen Seguro Social. Permite declarar impuestos legalmente. Lo obtenemos para ti sin necesidad de viajar a EE.UU.</p>
                     <a href="#contacto" class="btn btn-primary" style="margin-top: 1rem; padding: 0.6rem 1.5rem;">Solicitar ITIN</a>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-lock"></i> Confidencialidad IRS-Inmigración</h3>
                     <p>El IRS tiene prohibido por ley (IRC § 6103) compartir información fiscal con ICE o USCIS. Declarar impuestos NO afecta tu estatus migratorio.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-passport"></i> Beneficios de Declarar</h3>
-                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <ul style="padding-left: 1.2rem; margin-top: 0.5rem; color: var(--text-main);">
                         <li>Demuestra "Buen Carácter Moral"</li>
                         <li>Prueba de presencia física en EE.UU.</li>
                         <li>Abre puertas a créditos hipotecarios</li>
@@ -690,72 +885,72 @@
     <!-- NUEVA SECCIÓN: Servicios Profesionales -->
     <section id="servicios" style="background-color: #e8f4fc;">
         <div class="container">
-            <h2 class="section-title">Servicios Profesionales Complementarios</h2>
-            <p style="text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <h2 class="section-title fade-in-section">Servicios Profesionales Complementarios</h2>
+            <p style="text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto; color: var(--text-main);">
                 Ofrecemos una suite completa de servicios para operar tu negocio en EE.UU. con profesionalismo y tranquilidad. 
                 <strong>Desde nuestra oficina en Dallas, Texas, atendemos clientes en todo el mundo.</strong>
             </p>
             
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-file-invoice"></i> Preparadora de Impuestos</h3>
                     <p><strong>Certificada por el IRS (PTIN)</strong>. Preparación y presentación de: 1040-NR, 1120, 1120-S, 1065, 5472, 8832, extensiones y enmiendas. Representación ante el IRS en caso de auditoría.</p>
-                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
-                        <small><i class="fas fa-clock"></i> Servicio disponible en oficina y remoto</small>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.9rem; color: var(--text-muted);">
+                        <i class="fas fa-clock"></i> Servicio disponible en oficina y remoto
                     </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-stamp"></i> Notaría Pública</h3>
                     <p><strong>Notario Público comisionado en Texas</strong>. Notarización de documentos para uso legal en EE.UU. e internacional: contratos, poderes notariales, declaraciones juradas, autenticación de documentos.</p>
-                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
-                        <small><i class="fas fa-map-marker-alt"></i> Servicio presencial en Dallas, TX</small>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.9rem; color: var(--text-muted);">
+                        <i class="fas fa-map-marker-alt"></i> Servicio presencial en Dallas, TX
                     </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-book"></i> Contadora & Bookkeeping</h3>
                     <p><strong>Contabilidad profesional completa</strong>. Sistema QuickBooks Online setup, reconciliación bancaria, estados financieros mensuales, reportes para impuestos, clasificación de gastos, manejo de nóminas.</p>
-                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
-                        <small><i class="fas fa-laptop"></i> 100% en línea con acceso 24/7</small>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.9rem; color: var(--text-muted);">
+                        <i class="fas fa-laptop"></i> 100% en línea con acceso 24/7
                     </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-building"></i> Administración de Empresas</h3>
                     <p><strong>Gestión operativa integral</strong>. Registro empresarial, licencias locales/estatales, compliance corporativo, actas de reuniones, mantenimiento de registros, servicios de registered agent, renewals anuales.</p>
-                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
-                        <small><i class="fas fa-headset"></i> Gestor dedicado asignado</small>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.9rem; color: var(--text-muted);">
+                        <i class="fas fa-headset"></i> Gestor dedicado asignado
                     </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-envelope-open-text"></i> Preparación de Cartas y Documentos</h3>
                     <p><strong>Redacción profesional bilingüe</strong>. Cartas al IRS, bancos, USCIS, USCBP; cartas de explicación (LOE), declaraciones juradas, contratos empresariales, acuerdos de operación LLC, documentos corporativos.</p>
-                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
-                        <small><i class="fas fa-language"></i> Inglés y español</small>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.9rem; color: var(--text-muted);">
+                        <i class="fas fa-language"></i> Inglés y español
                     </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card fade-in-section">
                     <h3><i class="fas fa-star"></i> Consultoría Integral 360°</h3>
                     <p><strong>Paquete todo-en-uno premium</strong>. Combinación de todos los servicios anteriores con un gestor dedicado. La solución completa para dueños extranjeros que quieren operar en Texas sin preocupaciones administrativas.</p>
-                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
-                        <small><i class="fas fa-crown"></i> Servicio premium con atención prioritaria</small>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.9rem; color: var(--text-muted);">
+                        <i class="fas fa-crown"></i> Servicio premium con atención prioritaria
                     </div>
                 </div>
             </div>
             
             <!-- Información de contacto en sección de servicios -->
-            <div class="contact-info-box">
+            <div class="contact-info-box fade-in-section" style="max-width: 800px; margin: 3rem auto 0;">
                 <h4><i class="fas fa-info-circle"></i> Información de Contacto para Servicios</h4>
                 <p><strong>📍 Dirección física:</strong> 4394 Wood Hollow Dr. #2816, Dallas, TX 75237</p>
-                <p><strong>📞 Teléfono principal:</strong> <a href="tel:+14696934613" style="color: var(--primary); text-decoration: none;">469-693-4613</a></p>
+                <p><strong>📞 Teléfono principal:</strong> <a href="tel:+14696934613">469-693-4613</a></p>
                 <p><strong>📧 Email servicios:</strong> servicios@texfiscal.com</p>
                 <p><strong>⏰ Horario para servicios presenciales:</strong> Lunes a Viernes 9am-6pm | Sábados 10am-2pm (con cita)</p>
             </div>
             
-            <div style="text-align: center; margin-top: 2rem;">
+            <div style="text-align: center; margin-top: 2rem;" class="fade-in-section">
                 <a href="#contacto" class="btn btn-primary">
                     <i class="fas fa-clipboard-list"></i> Solicitar Cotización Personalizada
                 </a>
@@ -765,16 +960,16 @@
 
     <!-- Lead Magnet -->
     <section id="lead-magnet">
-        <div class="container">
+        <div class="container fade-in-section">
             <div class="lead-magnet">
                 <h2><i class="fas fa-gift"></i> Descarga Gratis: Checklist de Cumplimiento 2026</h2>
                 <p>Recibe nuestra checklist paso a paso con todas las obligaciones, fechas y formularios para mantener tu LLC en Texas en "Good Standing". <strong>Incluye descuento exclusivo del 15% en tu primer servicio de preparación de impuestos o contabilidad.</strong></p>
                 
                 <form class="lead-form" id="download-form">
-                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <input type="email" placeholder="Tu correo electrónico" required aria-label="Correo electrónico">
                     <button type="submit" class="btn btn-primary">Descargar Checklist <i class="fas fa-arrow-down"></i></button>
                 </form>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">Respetamos tu privacidad. No compartimos tu email.</p>
+                <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.9;">Respetamos tu privacidad. No compartimos tu email.</p>
             </div>
         </div>
     </section>
@@ -782,10 +977,10 @@
     <!-- Calendar -->
     <section id="calendario">
         <div class="container">
-            <h2 class="section-title">Calendario Fiscal 2026: Fechas Clave</h2>
-            <p style="text-align: center; margin-bottom: 2rem;">Incumplir estas fechas genera multas severas y puede llevar al cierre de tu LLC.</p>
+            <h2 class="section-title fade-in-section">Calendario Fiscal 2026: Fechas Clave</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">Incumplir estas fechas genera multas severas y puede llevar al cierre de tu LLC.</p>
             
-            <div class="table-container">
+            <div class="table-container fade-in-section">
                 <table>
                     <thead>
                         <tr>
@@ -819,7 +1014,7 @@
                 </table>
             </div>
             
-            <div style="text-align: center; margin-top: 2rem;">
+            <div style="text-align: center; margin-top: 2rem;" class="fade-in-section">
                 <a href="#contacto" class="btn btn-primary">
                     <i class="fas fa-calendar-alt"></i> ¿Te preocupan estas fechas? Gestionamos tu calendario
                 </a>
@@ -830,9 +1025,9 @@
     <!-- FAQ -->
     <section id="faq" style="background-color: #f0f4f8;">
         <div class="container">
-            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <h2 class="section-title fade-in-section">Preguntas Frecuentes</h2>
             
-            <div class="faq-container">
+            <div class="faq-container fade-in-section">
                 <div class="faq-item">
                     <div class="faq-question">
                         ¿Realmente no pago income tax estatal en Texas?
@@ -888,21 +1083,21 @@
 
     <!-- Final CTA -->
     <section class="cta-section" id="contacto">
-        <div class="container">
+        <div class="container fade-in-section">
             <h2>¿Listo para Cumplir sin Estrés?</h2>
-            <p style="max-width: 700px; margin: 1rem auto 2rem; font-size: 1.1rem;">
+            <p style="max-width: 700px; margin: 1.5rem auto 2.5rem; font-size: 1.15rem;">
                 Visítanos en nuestra oficina de Dallas o agenda una consulta virtual. Nuestro equipo de expertos gestiona todo el proceso por ti: formularios IRS, reportes Texas, ITIN y más.
             </p>
             
             <!-- Información de contacto destacada -->
-            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: var(--radius); margin: 2rem auto; max-width: 600px;">
-                <h3 style="margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <div style="background: rgba(255,255,255,0.1); padding: 2.5rem; border-radius: var(--radius); margin: 2rem auto; max-width: 600px; border: 1px solid rgba(255,255,255,0.2);">
+                <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 10px; color: white;">
                     <i class="fas fa-map-marker-alt"></i> Oficina Dallas, Texas
                 </h3>
-                <p style="margin-bottom: 0.5rem;"><strong>📍 Dirección:</strong> 4394 Wood Hollow Dr. #2816, Dallas, TX 75237</p>
-                <p style="margin-bottom: 0.5rem;"><strong>📞 Teléfono:</strong> <a href="tel:+14696934613" style="color: white; text-decoration: underline;">469-693-4613</a></p>
-                <p style="margin-bottom: 0.5rem;"><strong>📧 Email:</strong> consultas@texfiscal.com</p>
-                <p><strong>⏰ Horario:</strong> Lunes a Viernes 9am - 6pm CST | Sábados con cita previa</p>
+                <p style="margin-bottom: 0.8rem; font-size: 1.1rem;"><strong>📍 Dirección:</strong> 4394 Wood Hollow Dr. #2816, Dallas, TX 75237</p>
+                <p style="margin-bottom: 0.8rem; font-size: 1.1rem;"><strong>📞 Teléfono:</strong> <a href="tel:+14696934613" style="color: #fff; text-decoration: underline; font-weight: 700;">469-693-4613</a></p>
+                <p style="margin-bottom: 0.8rem; font-size: 1.1rem;"><strong>📧 Email:</strong> consultas@texfiscal.com</p>
+                <p style="font-size: 1.1rem;"><strong>⏰ Horario:</strong> Lunes a Viernes 9am - 6pm CST | Sábados con cita previa</p>
             </div>
             
             <div class="hero-btns">
@@ -917,7 +1112,7 @@
                 </a>
             </div>
             
-            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+            <p style="margin-top: 2.5rem; font-size: 0.9rem; opacity: 0.8;">
                 <i class="fas fa-car"></i> Estacionamiento gratuito disponible | <i class="fas fa-wheelchair"></i> Accesible para sillas de ruedas
             </p>
         </div>
@@ -934,8 +1129,8 @@
                     Dallas, TX 75237<br>
                     Estados Unidos</p>
                     <p style="margin-top: 1rem;">
-                        <i class="fas fa-phone"></i> <a href="tel:+14696934613" style="color: #ccc; text-decoration: none;">469-693-4613</a><br>
-                        <i class="fas fa-envelope"></i> <a href="mailto:info@texfiscal.com" style="color: #ccc; text-decoration: none;">info@texfiscal.com</a>
+                        <i class="fas fa-phone"></i> <a href="tel:+14696934613" style="color: #8b949e; text-decoration: none;">469-693-4613</a><br>
+                        <i class="fas fa-envelope"></i> <a href="mailto:info@texfiscal.com" style="color: #8b949e; text-decoration: none;">info@texfiscal.com</a>
                     </p>
                 </div>
                 
@@ -976,11 +1171,11 @@
                         <li><a href="#">Divulgación de Riesgos</a></li>
                     </ul>
                     <div style="margin-top: 1.5rem;">
-                        <p>Síguenos:</p>
-                        <div style="display: flex; gap: 1rem; margin-top: 0.5rem; font-size: 1.2rem;">
-                            <a href="#" style="color: #ccc;"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" style="color: #ccc;"><i class="fab fa-facebook"></i></a>
-                            <a href="#" style="color: #ccc;"><i class="fab fa-instagram"></i></a>
+                        <p style="color: white; margin-bottom: 0.5rem;">Síguenos:</p>
+                        <div style="display: flex; gap: 1rem; margin-top: 0.5rem; font-size: 1.5rem;">
+                            <a href="#" style="color: #fff;"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" style="color: #fff;"><i class="fab fa-facebook"></i></a>
+                            <a href="#" style="color: #fff;"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -994,20 +1189,75 @@
     </footer>
 
     <script>
+        // Utilidad para notificaciones Toast (Reemplazo de alert)
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            let icon = 'fa-info-circle';
+            if(type === 'success') icon = 'fa-check-circle';
+            if(type === 'warning') icon = 'fa-exclamation-triangle';
+
+            toast.innerHTML = `<i class="fas ${icon}"></i> <span>${message}</span>`;
+            
+            container.appendChild(toast);
+            
+            // Remover después de 4 segundos
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(20px)';
+                toast.addEventListener('transitionend', () => toast.remove());
+            }, 4000);
+        }
+
+        // Animación al hacer scroll (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
         // Hamburger Menu Toggle
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
+            // Animación simple del icono hamburguesa
+            const spans = hamburger.querySelectorAll('span');
+            if (navMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
         });
 
         // Close menu when clicking a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
+                // Restaurar icono
+                const spans = hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
             });
         });
 
@@ -1017,6 +1267,16 @@
                 const answer = question.nextElementSibling;
                 const icon = question.querySelector('i');
                 
+                // Cerrar otros abiertos (Opcional: comportamiento de acordeón estricto)
+                /* 
+                document.querySelectorAll('.faq-answer').forEach(a => {
+                    if(a !== answer) {
+                        a.classList.remove('open');
+                        a.previousElementSibling.querySelector('i').className = 'fas fa-chevron-down';
+                    }
+                });
+                */
+
                 answer.classList.toggle('open');
                 
                 if (answer.classList.contains('open')) {
@@ -1029,32 +1289,35 @@
             });
         });
 
-        // Language Selector (Basic functionality)
+        // Language Selector (Simulación mejorada)
         const langEs = document.getElementById('lang-es');
         const langEn = document.getElementById('lang-en');
         
         langEs.addEventListener('click', () => {
-            langEs.classList.add('active');
-            langEn.classList.remove('active');
-            // In a real implementation, this would trigger a full translation
-            alert('Idioma cambiado a Español. En una implementación real, toda la página se traduciría.');
+            if(!langEs.classList.contains('active')) {
+                langEs.classList.add('active');
+                langEn.classList.remove('active');
+                showToast('Idioma cambiado a Español', 'info');
+            }
         });
         
         langEn.addEventListener('click', () => {
-            langEn.classList.add('active');
-            langEs.classList.remove('active');
-            alert('Language changed to English. In a real implementation, the entire page would translate.');
+            if(!langEn.classList.contains('active')) {
+                langEn.classList.add('active');
+                langEs.classList.remove('active');
+                showToast('Language changed to English', 'info');
+            }
         });
 
         // Form Submission
         document.getElementById('download-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = this.querySelector('input[type="email"]').value;
-            alert(`¡Gracias! Hemos enviado el Checklist de Cumplimiento 2026 a: ${email}\n\nRevisa tu carpeta de spam si no lo recibes en los próximos minutos.`);
+            showToast(`¡Gracias! Hemos enviado el Checklist a: ${email}`, 'success');
             this.reset();
         });
 
-        // Smooth scrolling for anchor links
+        // Smooth scrolling para links de ancla (Mejora de compatibilidad)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1064,19 +1327,15 @@
                 
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+                        top: offsetPosition,
+                        behavior: "smooth"
                     });
                 }
-            });
-        });
-
-        // Phone number click tracking (optional)
-        document.querySelectorAll('a[href^="tel:"]').forEach(phoneLink => {
-            phoneLink.addEventListener('click', function() {
-                console.log('Teléfono clickeado:', this.getAttribute('href'));
-                // Aquí podrías agregar Google Analytics o otro tracking
             });
         });
     </script>
